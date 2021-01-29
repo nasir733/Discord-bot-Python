@@ -1,10 +1,11 @@
 import os
 
 import discord
+from discord import member, message
 import random
 
 
-TOKEN = "ODAzMjY0OTg3MDE5NDc3MTAy.YA7Q0A.9ukjZnfj1TWMhrYpn_qUY6YR3AM"
+TOKEN = ""
 GUILD = "Team VLAD"
 client = discord.Client()
 
@@ -36,11 +37,14 @@ async def on_message(message):
         ),
     ]
 
-    if message.content == "99!":
-        reponse = random.choice(brooklyn_99_quotes)
-        await message.channel.send(reponse)
+    reponse = random.choice(brooklyn_99_quotes)
+    await message.channel.send(reponse)
     if 'hi' in message.content.lower():
-        await message.channel.send('Hi how are you?')
+        await message.channel.send(f'Hi welcome to the non anime disocrd group {message.author}')
+    if "nasir" in message.content.lower():
+        await message.channel.send(f'yes he is the best programmer {message.author}')
+    if "fardeen" in message.content.lower():
+        await message.channel.send(f'yes he is the anime watcher {message.author}')
     elif message.content == 'fardeen':
         raise discord.DiscordException
 
@@ -52,4 +56,5 @@ async def on_error(event, *args, **kwargs):
             f.write(f'Unhandled message: {args[0]}\n')
         else:
             raise
+# print(member, message)
 client.run(TOKEN)
